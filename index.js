@@ -7,6 +7,7 @@ for (let i = 0; i < 7; i++) {
     document.querySelectorAll("button")[i].addEventListener("click", function () {
         var button = this.innerHTML;
         makeSound(button);
+        animate(button);
     });
 }
 //detects keyboard presses
@@ -14,6 +15,7 @@ for (let i = 0; i < 7; i++) {
     document.addEventListener("keydown", function (e) {
         var button = e.key;
         makeSound(button);
+        animate(button);
     });
 }
 
@@ -50,4 +52,14 @@ function makeSound(a) {
         default:
             break;
     }
+}
+function animate(a) {
+    //add anumation when a certain key is pressed 
+   var activeButton = document.querySelector("." + a);
+    activeButton.classList.add("pressed");
+    setTimeout(function () {
+        activeButton.classList.remove("pressed");
+    }
+        , 100);
+            
 }
